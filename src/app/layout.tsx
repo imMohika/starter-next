@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
+import { Providers } from "@/app/providers";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -34,10 +35,12 @@ export default function RootLayout({
 					geistMono.variable,
 				)}
 			>
-				<Header />
-				<div className="flex min-h-0 flex-1 flex-col *:only:flex-1">
-					{children}
-				</div>
+				<Providers>
+					<Header />
+					<div className="flex min-h-0 flex-1 flex-col *:only:flex-1">
+						{children}
+					</div>
+				</Providers>
 			</body>
 		</html>
 	);

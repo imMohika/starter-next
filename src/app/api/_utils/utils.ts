@@ -1,13 +1,14 @@
 import "server-only";
 import { serverLogger } from "@/lib/logger/logger.server";
 import type { z } from "zod";
+import type { ZodObjectSchema } from "@/app/types";
+import { ApiError } from "next/dist/server/api-utils";
 
 export type Result<T> =
 	| { value: T; err?: never }
 	| { value?: never; err: Error };
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export const validateBody = async <T extends z.ZodObject<any, any>>(
+export const validateBody = async <T extends ZodObjectSchema>(
 	request: Request,
 	validator: T,
 ): Promise<Result<z.infer<T>>> => {
@@ -33,4 +34,16 @@ export const validateBody = async <T extends z.ZodObject<any, any>>(
 			err: new Error(msg),
 		};
 	}
+};
+
+export const parseBody = async <T extends ZodObjectSchema>(
+	request: Request,
+	validator: T,
+): Promise<z.infer<T>> => {
+	const { value, err } = await validateBody(request, validator);
+	if (!value) {
+		throw new ApiError(400, err?.message ?? "invalid request body");
+	}
+
+	return value;
 };
