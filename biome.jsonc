@@ -34,7 +34,6 @@
 				"noDangerouslySetInnerHtmlWithChildren": "error"
 			},
 			"style": {
-				"noImplicitBoolean": "error",
 				"useFragmentSyntax": "error"
 			}
 		}
