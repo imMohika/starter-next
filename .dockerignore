@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Dependencies
+node_modules
+
+# Build artifacts
+.next
+dist
+build
+out
+
+# Local environment variables
+.env
+
+# IDE / Editor specific
+.vscode
+.idea

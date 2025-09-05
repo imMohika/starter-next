@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:standalone": "BUILD_STANDALONE=true pnpm run build",
     "start": "next start",
     "lint": "biome check --write",
     "ui": "pnpm dlx shadcn@latest"
