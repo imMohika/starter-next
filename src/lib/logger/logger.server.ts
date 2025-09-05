@@ -1,7 +1,11 @@
 import "server-only";
 
-import { envServer } from "@/lib/env/env.server";
 import pino from "pino";
+import { pinoLoki } from "pino-loki";
+import { envServer } from "@/lib/env/env.server";
+
+// noinspection BadExpressionStatementJS: workaround to prevent webpack's tree-shaking
+typeof pinoLoki;
 
 const createTransports = () => {
 	const targets = [];
