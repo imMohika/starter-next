@@ -15,14 +15,13 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	Tooltip,
-	TooltipContent,
+	TooltipContent, TooltipPortal,
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { TooltipPortal } from "@radix-ui/react-tooltip";
 import type { ColumnDef } from "@tanstack/react-table";
 import { differenceInYears, format } from "date-fns";
-import { InfoIcon, MailIcon } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 
 const columns: Array<ColumnDef<Person>> = [
 	{
