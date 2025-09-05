@@ -38,7 +38,8 @@
       "recommended": true,
       "suspicious": {
         "noConsole": "warn",
-        "noSuspiciousSemicolonInJsx": "error"
+        "noSuspiciousSemicolonInJsx": "error",
+        "noUnknownAtRules": "off"
       },
       "nursery": {
         "useSortedClasses": {
