@@ -1,19 +1,19 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.2.3/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true,
 		"defaultBranch": "main"
 	},
-	"files": { "ignoreUnknown": true, "ignore": [] },
+	"files": { "ignoreUnknown": true, "includes": ["**"] },
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
 		"indentWidth": 2,
 		"lineWidth": 80
 	},
-	"organizeImports": { "enabled": true },
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -50,7 +50,7 @@
 	},
 	"overrides": [
 		{
-			"include": ["./src/lib/logger/logger.client.ts"],
+			"includes": ["src/lib/logger/logger.client.ts"],
 			"linter": {
 				"rules": {
 					"suspicious": { "noConsole": "off" }
