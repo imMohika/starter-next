@@ -1,61 +1,90 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.2.3/schema.json",
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true,
-		"defaultBranch": "main"
-	},
-	"files": { "ignoreUnknown": true, "includes": ["**"] },
-	"formatter": {
-		"enabled": true,
-		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineWidth": 80
-	},
-	"assist": { "actions": { "source": { "organizeImports": "on" } } },
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true,
-			"suspicious": {
-				"noConsole": "warn",
-				"noSuspiciousSemicolonInJsx": "error"
-			},
-			"nursery": {
-				"useSortedClasses": "error"
-			},
-			"correctness": {
-				"noUnknownFunction": "error",
-				"noUnknownUnit": "error"
-			},
-			"security": {
-				"noDangerouslySetInnerHtml": "error",
-				"noDangerouslySetInnerHtmlWithChildren": "error"
-			},
-			"style": {
-				"useFragmentSyntax": "error"
-			}
-		}
-	},
-	"javascript": {
-		"jsxRuntime": "reactClassic",
-		"formatter": {
-			"quoteStyle": "double",
-			"semicolons": "always"
-		}
-	},
-	"css": {
-		"formatter": { "quoteStyle": "double" }
-	},
-	"overrides": [
-		{
-			"includes": ["src/lib/logger/logger.client.ts"],
-			"linter": {
-				"rules": {
-					"suspicious": { "noConsole": "off" }
-				}
-			}
-		}
-	]
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**/*"]
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "bracketSpacing": true
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "off"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "react": "recommended",
+      "next": "recommended"
+    },
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noConsole": "warn",
+        "noSuspiciousSemicolonInJsx": "error"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "error",
+          "options": {
+            "attributes": ["className"],
+            "functions": ["cn", "cva"]
+          }
+        }
+      },
+      "correctness": {
+        "noUnknownFunction": "error",
+        "noUnknownUnit": "error"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "error",
+        "noDangerouslySetInnerHtmlWithChildren": "error"
+      },
+      "style": {
+        "useFragmentSyntax": "error"
+      }
+    }
+  },
+  "javascript": {
+    "jsxRuntime": "reactClassic",
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always"
+    }
+  },
+  "css": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["src/lib/logger/logger.client.ts"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    }
+  ]
 }
